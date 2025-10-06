@@ -8,7 +8,7 @@ function getAuthHeaders(): HeadersInit {
   }
 
   return {
-    Authorization: Bearer ,
+    Authorization: `Bearer ${token}`,
     'Content-Type': 'application/json'
   }
 }
@@ -24,7 +24,7 @@ function getKvBaseUrl() {
 }
 
 export async function kvGet<T>(key: string): Promise<T | null> {
-  const url = ${getKvBaseUrl()}/get/
+  const url = `${getKvBaseUrl()}/get/${encodeURIComponent(key)}`
   const res = await fetch(url, {
     headers: getAuthHeaders()
   })
@@ -37,7 +37,7 @@ export async function kvGet<T>(key: string): Promise<T | null> {
 }
 
 export async function kvPut(key: string, value: unknown, ttlSec = 86_400): Promise<void> {
-  const url = ${getKvBaseUrl()}/set/
+  const url = `${getKvBaseUrl()}/set/${encodeURIComponent(key)}`
   await fetch(url, {
     method: 'POST',
     headers: getAuthHeaders(),

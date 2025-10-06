@@ -1,7 +1,7 @@
 ﻿import type { TClipAnalyzeIn, TClipAnalyzeOut, TL10nTranslateIn, TL10nTranslateOut } from './schemas'
 
 export async function analyzeClip(apiBase: string, payload: TClipAnalyzeIn): Promise<TClipAnalyzeOut> {
-  const res = await fetch(${apiBase}/api/clip/analyze, {
+  const res = await fetch(`${apiBase}/api/clip/analyze`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -10,14 +10,14 @@ export async function analyzeClip(apiBase: string, payload: TClipAnalyzeIn): Pro
   })
 
   if (!res.ok) {
-    throw new Error(Failed to analyze clip: )
+    throw new Error(`Failed to analyze clip: ${res.status}`)
   }
 
   return (await res.json()) as TClipAnalyzeOut
 }
 
 export async function translateRows(apiBase: string, payload: TL10nTranslateIn): Promise<TL10nTranslateOut> {
-  const res = await fetch(${apiBase}/api/l10n/translate, {
+  const res = await fetch(`${apiBase}/api/l10n/translate`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ export async function translateRows(apiBase: string, payload: TL10nTranslateIn):
   })
 
   if (!res.ok) {
-    throw new Error(Failed to translate rows: )
+    throw new Error(`Failed to translate rows: ${res.status}`)
   }
 
   return (await res.json()) as TL10nTranslateOut
