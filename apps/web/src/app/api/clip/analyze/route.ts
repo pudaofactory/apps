@@ -1,5 +1,5 @@
 ﻿import { NextRequest, NextResponse } from 'next/server'
-import { ClipAnalyzeIn, ClipAnalyzeOut } from '@sdk/schemas'
+import { ClipAnalyzeIn, ClipAnalyzeOut } from '@repo/sdk'
 import { callLLM } from '@/lib/llm'
 import { getUserId } from '@/lib/auth'
 

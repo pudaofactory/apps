@@ -1,5 +1,5 @@
 ﻿import { NextRequest, NextResponse } from 'next/server'
-import { L10nTranslateIn, L10nTranslateOut } from '@sdk/schemas'
+import { L10nTranslateIn, L10nTranslateOut } from '@repo/sdk'
 import { callLLM } from '@/lib/llm'
 import { getUserId } from '@/lib/auth'
 

@@ -46,7 +46,8 @@ async function safeKvPut(key: string, value: MockResult) {
 }
 
 function hashPayload(task: TaskName, payload: AnyPayload) {
-  return createHash('sha256').update(${task}:).digest('hex')
+  const serialized = JSON.stringify(payload)
+  return createHash('sha256').update(`${task}:${serialized}`).digest('hex')
 }
 
 export async function callLLM(task: TaskName, payload: AnyPayload): Promise<MockResult> {
