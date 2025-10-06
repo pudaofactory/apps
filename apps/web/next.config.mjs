@@ -6,14 +6,13 @@ const nextConfig = {
   transpilePackages: ['@repo/ui', '@repo/sdk']
   ,headers: async () => {
     const isPreview = process.env.VERCEL_ENV === 'preview'
+    if (!isPreview) return []
     return [
       {
         source: '/:path*',
-        headers: isPreview
-          ? [
-              { key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' }
-            ]
-          : []
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' }
+        ]
       }
     ]
   }
