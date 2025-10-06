@@ -1,0 +1,15 @@
+﻿{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ui/*": ["packages/ui/src/*"],
+      "@sdk/*": ["packages/sdk/src/*"],
+      "@prompts/*": ["packages/prompts/src/*"],
+      "@config/*": ["packages/config/src/*"]
+    }
+  }
+}

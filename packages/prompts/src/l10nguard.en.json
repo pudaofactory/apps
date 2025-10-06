@@ -1,0 +1,12 @@
+﻿{
+  \"name\": \"L10nGuard Prompt (English)\",
+  \"instruction\": \"Translate and review product copy for ecommerce listings.\",
+  \"output\": {
+    \"rows\": [
+      {
+        \"source\": \"Original text\",
+        \"target\": \"Translated text\"
+      }
+    ]
+  }
+}

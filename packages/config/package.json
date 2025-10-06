@@ -1,0 +1,13 @@
+{
+  "name": "@repo/config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "commonjs",
+  "main": "src/eslint.cjs",
+  "files": ["src"],
+  "exports": {
+    "./eslint": "./src/eslint.cjs",
+    "./prettier": "./src/prettier.cjs",
+    "./tailwind": "./src/tailwind.js"
+  }
+}

@@ -1,0 +1,14 @@
+﻿{
+  \"name\": \"ClipWedge Prompt (English)\",
+  \"instruction\": \"Summarize and propose cut points for short-form video clips.\",
+  \"output\": {
+    \"clips\": [
+      {
+        \"headline\": \"Hook headline\",
+        \"hook\": \"Teaser line\",
+        \"start\": 0,
+        \"end\": 30
+      }
+    ]
+  }
+}

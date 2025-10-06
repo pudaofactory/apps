@@ -1,0 +1,14 @@
+﻿{
+  \"name\": \"ClipWedge Prompt (Español)\",
+  \"instruction\": \"Resume y propone momentos clave para clips cortos.\",
+  \"output\": {
+    \"clips\": [
+      {
+        \"headline\": \"Titular\",
+        \"hook\": \"Frase de apertura\",
+        \"start\": 0,
+        \"end\": 30
+      }
+    ]
+  }
+}
