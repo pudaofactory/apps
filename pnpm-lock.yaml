@@ -66,6 +66,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@repo/sdk':
+        specifier: workspace:*
+        version: link:../../packages/sdk
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
