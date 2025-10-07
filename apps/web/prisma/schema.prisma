@@ -1,0 +1,86 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  // directUrl 使用直连在某些 IPv4 网络下会不可达；为保证本地/CI 可运行，暂时指向池子
+  directUrl = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Plan {
+  FREE
+  PRO
+  YEAR
+}
+
+enum Provider {
+  lemon_squeezy
+  stripe
+}
+
+enum SubStatus {
+  active
+  trialing
+  past_due
+  canceled
+}
+
+model User {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  createdAt    DateTime       @default(now())
+  subscription Subscription?
+  credits      Credit?
+  usage        UsageEvent[]
+  payments     Payment[]
+}
+
+model Subscription {
+  userId     String   @id
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan       Plan
+  status     SubStatus
+  provider   Provider
+  externalId String?
+  renewsAt   DateTime?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Credit {
+  userId    String   @id
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clip      Int      @default(0)
+  l10n      Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
+
+model UsageEvent {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   String
+  inputHash String?
+  tokens    Int       @default(0)
+  costUsd   Decimal   @db.Decimal(10, 4)
+  provider  String?
+  cacheHit  Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  @@index([userId, product, createdAt])
+}
+
+model Payment {
+  id         String   @id @default(cuid())
+  email      String
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  plan       Plan
+  amountUsd  Decimal  @db.Decimal(10, 2)
+  provider   Provider
+  externalId String?
+  createdAt  DateTime @default(now())
+}
+
+
