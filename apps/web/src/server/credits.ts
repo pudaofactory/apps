@@ -1,5 +1,6 @@
 import { prisma } from './prisma'
-import type { Plan } from '@prisma/client'
+import type { $Enums } from '@prisma/client'
+type Plan = $Enums.Plan
 
 const PLAN_QUOTA = {
   FREE: { clip: 20, l10n: 10 },
