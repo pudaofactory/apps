@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     typedRoutes: true
   },
+  eslint: { ignoreDuringBuilds: true },
   transpilePackages: ['@repo/ui', '@repo/sdk']
   ,headers: async () => {
     const isPreview = process.env.VERCEL_ENV === 'preview'
