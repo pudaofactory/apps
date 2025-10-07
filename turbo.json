@@ -1,9 +1,11 @@
 ﻿{
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["DATABASE_URL", "DIRECT_DATABASE_URL"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "build/**"]
+      "outputs": ["dist/**", ".next/**", "build/**"],
+      "env": ["DATABASE_URL", "DIRECT_DATABASE_URL", "NODE_ENV"]
     },
     "dev": {
       "cache": false,
